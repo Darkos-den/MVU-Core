@@ -1,10 +1,10 @@
 Pod::Spec.new do |spec|
     spec.name                     = 'core'
     spec.version                  = '1.0.0'
-    spec.homepage                 = 'Link to the Shared Module homepage'
-    spec.source                   = { :path => '/Users/touchtouch/AndroidStudioProjects/Core' }
-    spec.authors                  = ''
-    spec.license                  = ''
+    spec.homepage                 = 'https://github.com/Darkos-den/MVU-Core'
+    spec.source                   = { :git => 'https://github.com/Darkos-den/MVU-Core.git', :tag => 'v1.0.0' }
+    spec.authors                  = { 'Darkos' => 'loboda.deni@gmail.com' }
+    spec.license                  = { :type => 'BSD' }
     spec.summary                  = 'Some description for the Shared Module'
 
     spec.vendored_frameworks      = "build/cocoapods/framework/core.framework"
