@@ -13,8 +13,8 @@ kotlin {
     iosSimulatorArm64()
 
     cocoapods {
-        summary = "Some description for the Shared Module"
-        homepage = "Link to the Shared Module homepage"
+        summary = "Base module for using the MVU architecture"
+        homepage = "https://github.com/Darkos-den/MVU-Core"
         ios.deploymentTarget = "14.1"
         framework {
             baseName = "core"
