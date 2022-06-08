@@ -11,7 +11,7 @@ Add dependencies into `build.gradle`
         val commonMain by getting {
             dependencies {
                 ...
-                implementation("Core:core:1.0.0")
+                implementation("MVU:core:1.0.0")
                 ...
             }
         }

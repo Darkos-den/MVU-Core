@@ -6,5 +6,5 @@ pluginManagement {
     }
 }
 
-rootProject.name = "Core"
+rootProject.name = "MVU"
 include(":core")
