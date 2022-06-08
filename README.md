@@ -6,8 +6,8 @@ So far I'm not going to upload artifacts anywhere, so just download the project 
 
 Add dependencies into `build.gradle`
 
-``` groovy
-    ...
+``` kotlin
+    //...
         val commonMain by getting {
             dependencies {
                 ...
@@ -15,7 +15,7 @@ Add dependencies into `build.gradle`
                 ...
             }
         }
-    ...
+    //...
 ```
 
 ## Architecture overview
