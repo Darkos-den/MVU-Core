@@ -4,6 +4,20 @@ Base module for using the MVU architecture
 ## Installation
 So far I'm not going to upload artifacts anywhere, so just download the project and make "publishToMavenLocal"
 
+Add dependencies into `build.gradle`
+
+``` groovy
+    ...
+        val commonMain by getting {
+            dependencies {
+                ...
+                implementation("Core:core:1.0.0")
+                ...
+            }
+        }
+    ...
+```
+
 ## Architecture overview
 The basic principles of architecture are based on "The Elm Architecture".
 The main components of the architecture are:
