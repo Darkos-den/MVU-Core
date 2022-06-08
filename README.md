@@ -2,16 +2,16 @@
 Base module for using the MVU architecture
 
 ## Installation
-TODO
+So far I'm not going to upload artifacts anywhere, so just download the project and make "publishToMavenLocal"
 
 ## Architecture overview
-Основные принципы архитектуры базируются на "The Elm Architecture". 
-Основными компонентами архитектуры являются: 
-- state - состояние компонента, данные необходимые для отображения корректного состояния пользовательского интерфейса;
-- message - намерение изменить состояние компонента, могут продуцироваться как пользовательским интерфейсом так и внутренними механизмами;
-- effect - намерение провести какую либо работу в фоне(запрос на сервер, длительные вычисления и т.д.);
-- reducer - обработчик компонентов типа "message";
-- effectHandler - обработчик компонентов типа "effect".
+The basic principles of architecture are based on "The Elm Architecture".
+The main components of the architecture are:
+- state - state of the component, data required to display the correct state of the user interface;
+- message - the intention to change the state of the component, can be produced both by the user interface and internal mechanisms;
+- effect - intention to perform some work in the background (request to the server, lengthy calculations, etc.);
+- reducer - handler of "message" type components;
+- effectHandler - handler for "effect" type components.
 
-Взаимодействие компонентов между собой можно представить в виде диаграммы:
+The interaction of components with each other can be represented as a diagram:
 ![plot](./screens/components.png)
