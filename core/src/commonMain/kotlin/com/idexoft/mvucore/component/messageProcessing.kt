@@ -4,6 +4,7 @@ import co.touchlab.stately.isFrozen
 import com.idexoft.mvucore.api.EffectHandler
 import com.idexoft.mvucore.api.IStateStore
 import com.idexoft.mvucore.api.Reducer
+import com.idexoft.mvucore.model.effect.FlowEffect
 import com.idexoft.mvucore.model.effect.None
 import com.idexoft.mvucore.model.message.Idle
 import com.idexoft.mvucore.model.message.Message
@@ -46,10 +47,6 @@ fun messageProcessing(id: Long, message: Message, state: State, effectHandler: E
             it !is None
         }.forEach {
             effectProcessor(id, it, effectHandler, stateEffect.state)
-            runBlocking { delay(1000) }
-            Logger.d("SKA", "----| reducer: ${reducer.isFrozen}")
-            Logger.d("SKA", "----| effectHandler: ${effectHandler.isFrozen}")
-            Logger.d("SKA", "----| stateStore: ${globalStore.isFrozen}")
         }
     }
 }
