@@ -5,6 +5,6 @@ import platform.Foundation.NSLog
 
 actual object Logger: ILogger {
     actual override fun d(tag: String, message: String) {
-        print("[$tag] $message")
+        println("[$tag] $message")
     }
 }

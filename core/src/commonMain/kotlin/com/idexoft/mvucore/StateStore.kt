@@ -17,57 +17,55 @@ class StateStore(
     private var lastParentId: Long? = null
 
     override val activeStates: List<Pair<Long, State>>
-        @Synchronized get() {
+        get() {
             return states.toList()
         }
 
-    @Synchronized
     override fun getOrCreate(id: Long, owner: String): State {
         return states[id] ?: provider.get(owner).also {
             create(id, it)
         }.also {
-            it.parentId = lastParentId
+            val copy = lastParentId
+            it.parentIdState.access {
+                it.id = copy
+            }
             if(it is ParentState){
                 lastParentId = id
             }
         }
     }
 
-    @Synchronized
     override fun getOrNull(id: Long): State? {
         return states[id]
     }
 
-    @Synchronized
     override fun create(id: Long, state: State) {
         states[id] = state
     }
 
-    @Synchronized
     override fun updateState(id: Long, state: State) {
-        state.parentId = states[id]?.parentId
+        val parentId = states[id]?.parentIdState?.access { it.id }
+        state.parentIdState.access {
+            it.id = parentId
+        }
         states[id] = state
     }
 
-    @Synchronized
     override fun registerJob(id: Long, job: Job) {
         jobs[id] = (jobs[id] ?: emptyList()) + job
     }
 
-    @Synchronized
     override fun registerNamedJob(id: Long, name: String, job: Job) {
         namedJobs[id] = (namedJobs[id] ?: HashMap()).apply {
             this[name] = job
         }
     }
 
-    @Synchronized
     override fun cancelNamedJob(id: Long, name: String) {
         namedJobs[id]?.get(name)?.cancel()
         namedJobs[id]?.remove(name)
     }
 
-    @Synchronized
     override fun remove(id: Long) {
         states.remove(id)
         jobs[id]?.forEach {
@@ -80,7 +78,6 @@ class StateStore(
         namedJobs.remove(id)
     }
 
-    @Synchronized
     override fun clear() {
         jobs.map { it.value }.flatten().forEach {
             it.cancel()

@@ -40,20 +40,20 @@ class Active(
         ).takeIf {
             !it && message !is LifecycleMessage
         }?.let {
-            do {
-                val parentId = state?.parentId ?: throw IllegalArgumentException("reducer for message [${message}] not registered!")
-
-                val result = store.getOrNull(parentId)?.let {
-                    state = it
-                    processMessage(
-                        message = message,
-                        id = parentId,
-                        state = it
-                    )
-                }?.let {
-                    !it
-                } ?: false
-            } while (result)
+//            do {
+//                val parentId = state?.parentId ?: throw IllegalArgumentException("reducer for message [${message}] not registered!")
+//
+//                val result = store.getOrNull(parentId)?.let {
+//                    state = it
+//                    processMessage(
+//                        message = message,
+//                        id = parentId,
+//                        state = it
+//                    )
+//                }?.let {
+//                    !it
+//                } ?: false
+//            } while (result)
         }
     }
 
