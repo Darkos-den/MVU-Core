@@ -1,25 +1,21 @@
 Pod::Spec.new do |spec|
     spec.name                     = 'core'
-    spec.version                  = '1.0.0'
+    spec.version                  = '1.0.1'
     spec.homepage                 = 'https://github.com/Darkos-den/MVU-Core'
-    spec.source                   = { :path => '/Users/touchtouch/AndroidStudioProjects/Core' }
+    spec.source                   = { :http=> ''}
     spec.authors                  = ''
     spec.license                  = ''
     spec.summary                  = 'Base module for using the MVU architecture'
-
-    spec.vendored_frameworks      = "build/cocoapods/framework/core.framework"
-    spec.libraries                = "c++"
-    spec.module_name              = "#{spec.name}_umbrella"
-
+    spec.vendored_frameworks      = 'build/cocoapods/framework/core.framework'
+    spec.libraries                = 'c++'
     spec.ios.deployment_target = '14.1'
-
                 
-
+                
     spec.pod_target_xcconfig = {
         'KOTLIN_PROJECT_PATH' => ':core',
         'PRODUCT_MODULE_NAME' => 'core',
     }
-
+                
     spec.script_phases = [
         {
             :name => 'Build core',
@@ -35,8 +31,9 @@ Pod::Spec.new do |spec|
                 "$REPO_ROOT/../gradlew" -p "$REPO_ROOT" $KOTLIN_PROJECT_PATH:syncFramework \
                     -Pkotlin.native.cocoapods.platform=$PLATFORM_NAME \
                     -Pkotlin.native.cocoapods.archs="$ARCHS" \
-                    -Pkotlin.native.cocoapods.configuration=$CONFIGURATION
+                    -Pkotlin.native.cocoapods.configuration="$CONFIGURATION"
             SCRIPT
         }
     ]
+                
 end

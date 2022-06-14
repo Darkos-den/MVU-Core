@@ -26,9 +26,7 @@ class StateStore(
             create(id, it)
         }.also {
             val copy = lastParentId
-            it.parentIdState.access {
-                it.id = copy
-            }
+            it.parentIdState.id = copy
             if(it is ParentState){
                 lastParentId = id
             }
@@ -44,10 +42,8 @@ class StateStore(
     }
 
     override fun updateState(id: Long, state: State) {
-        val parentId = states[id]?.parentIdState?.access { it.id }
-        state.parentIdState.access {
-            it.id = parentId
-        }
+        val parentId = states[id]?.parentIdState?.id
+        state.parentIdState.id = parentId
         states[id] = state
     }
 

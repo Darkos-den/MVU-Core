@@ -27,14 +27,14 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.1-native-mt") {
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.2") {
                     version {
-                        strictly("1.6.1-native-mt")
+                        strictly("1.6.2")
                     }
                 }
-                implementation("co.touchlab:stately-common:1.2.0")
-                implementation("co.touchlab:stately-isolate:1.2.0")
-                implementation("co.touchlab:stately-iso-collections:1.2.0")
+//                implementation("co.touchlab:stately-common:1.2.0")
+//                implementation("co.touchlab:stately-isolate:1.2.0")
+//                implementation("co.touchlab:stately-iso-collections:1.2.0")
             }
         }
         val commonTest by getting {

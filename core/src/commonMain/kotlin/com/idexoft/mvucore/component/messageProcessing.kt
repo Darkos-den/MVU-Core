@@ -1,6 +1,5 @@
 package com.idexoft.mvucore.component
 
-import co.touchlab.stately.isFrozen
 import com.idexoft.mvucore.api.EffectHandler
 import com.idexoft.mvucore.api.IStateStore
 import com.idexoft.mvucore.api.Reducer
@@ -26,10 +25,7 @@ fun messageProcessing(id: Long, message: Message, state: State, effectHandler: E
     val globalStore = globalStore!!
 
     if (stateEffect == null) {
-        state.parentIdState.access {
-            it.id
-        }?.let { parentId ->
-            Logger.d("SKA", "----| 1 stateStore: ${globalStore.isFrozen}")
+        state.parentIdState.id?.let { parentId ->
             globalStore.getOrNull(parentId)?.let {
                 messageProcessing(parentId, message, it, effectHandler)
             } ?: run {
@@ -39,7 +35,6 @@ fun messageProcessing(id: Long, message: Message, state: State, effectHandler: E
             IllegalArgumentException("reducer for message [${message}] not registered!")
         }
     } else {
-        Logger.d("SKA", "----| 2 stateStore: ${globalStore.isFrozen}")
         globalStore.updateState(id, stateEffect.state)
         globalStateListener?.invoke(id, state)
 
