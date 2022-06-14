@@ -25,8 +25,7 @@ class StateStore(
         return states[id] ?: provider.get(owner).also {
             create(id, it)
         }.also {
-            val copy = lastParentId
-            it.parentIdState.id = copy
+            it.parentId = lastParentId
             if(it is ParentState){
                 lastParentId = id
             }
@@ -42,8 +41,7 @@ class StateStore(
     }
 
     override fun updateState(id: Long, state: State) {
-        val parentId = states[id]?.parentIdState?.id
-        state.parentIdState.id = parentId
+        state.parentId = states[id]?.parentId
         states[id] = state
     }
 

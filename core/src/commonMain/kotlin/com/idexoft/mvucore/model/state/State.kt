@@ -1,7 +1,7 @@
 package com.idexoft.mvucore.model.state
 
 abstract class State {
-    val parentIdState = ParentIdState()
+    var parentId: Long? = null
 
     abstract fun toMap(): Map<String, Any?>
 }
